@@ -4,10 +4,12 @@ all:
     {%- for cluster in clusters %}
     {{ cluster.name }}:
       hosts:
-        {%- for vm in vms[cluster.name] %}
+        {%- for vm in vms[cluster.comments] %}
         {{ vm.name }}:
+          {%- if vm.primary_ip.address %}
           ansible_host: {{ vm.primary_ip.address.split('/')[0] }}
-          {% for meta_key in vm.custom_fields.metadata -%}
+          {%- endif %}
+          {%- for meta_key in vm.custom_fields.metadata -%}
           {{ meta_key }}: {{ vm.custom_fields.metadata[meta_key] }}
           {% endfor %}
         {%- endfor %}
