@@ -1,3 +1,5 @@
 pynetbox
 pyyaml
 click
+python-terraform
+jinja2

@@ -60,9 +60,10 @@ def create_cluster(netbox, cluster_data, cluster_group, base_name, coi_tag):
         # Setup metadata custom field dict if metadata is present
         metadata = {"automation": {
             "networks": cluster_data['networks'],
-            "vips": cluster_data['vips']
             }
         }
+        if cluster_data.get("vips"):
+            metadata["automation"]["vips"] = cluster_data['vips']
         if cluster_data.get("metadata"):
             metadata.update(cluster_data['metadata'])
         
