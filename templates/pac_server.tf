@@ -1,6 +1,6 @@
 {%- for vm in vms -%}
 module "{{ vm.name }}" {
-  source = {{ module_base }}
+  source = "{{ module_base }}"
   hostname = "{{ vm.name }}"
   username = "kirimson"
   memoryMB = {{ vm.memory }}

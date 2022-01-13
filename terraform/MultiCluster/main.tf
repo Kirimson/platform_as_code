@@ -1,5 +1,5 @@
 module "apl96917i2" {
-  source = /home/kirimson/Documents/interviewtask/platform_as_code/terraform/modules/base
+  source = "/home/kirimson/Documents/interviewtask/platform_as_code/terraform/modules/base"
   hostname = "apl96917i2"
   username = "kirimson"
   memoryMB = 1024
@@ -9,7 +9,7 @@ module "apl96917i2" {
   subnet_ip = "131"
 }
 module "apl06649i2" {
-  source = /home/kirimson/Documents/interviewtask/platform_as_code/terraform/modules/base
+  source = "/home/kirimson/Documents/interviewtask/platform_as_code/terraform/modules/base"
   hostname = "apl06649i2"
   username = "kirimson"
   memoryMB = 1024
