@@ -70,7 +70,7 @@ def create_cluster(netbox, cluster_data, cluster_group, base_name, coi_tag):
         # Create the cluster, within the cluster group (main service)
         nb_cluster = netbox.virtualization.clusters.create(name=cluster_name,
                 type=1, group=cluster_group.id, custom_fields={"metadata":metadata},
-                tags=[coi_tag.id])
+                tags=[coi_tag.id], comments=base_name)
         print(F"Created Cluster: {nb_cluster}")
     else:
         print(F"Cluster: {nb_cluster} Already Exists. Continuing...")
