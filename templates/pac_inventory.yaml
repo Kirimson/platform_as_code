@@ -2,9 +2,9 @@
 all:
   children:
     {%- for cluster in clusters %}
-    {{ cluster.name }}:
+    {{ cluster.comments }}:
       hosts:
-        {%- for vm in vms[cluster.comments] %}
+        {%- for vm in vms[cluster.name] %}
         {{ vm.name }}:
           {%- if vm.primary_ip.address %}
           ansible_host: {{ vm.primary_ip.address.split('/')[0] }}
