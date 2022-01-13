@@ -89,7 +89,8 @@ def create_vm(netbox, vm_data, nb_cluster, base_name, coi_tag):
 
     # Setup metadata custom field dict if metadata is present
     metadata = {"automation": {
-        "networks": vm_data['networks']
+        "networks": vm_data['networks'],
+        "os": vm_data['os']
         }
     }
     if vm_data.get("metadata"):
