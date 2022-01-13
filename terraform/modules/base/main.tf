@@ -8,5 +8,5 @@ terraform {
 }
 
 provider "libvirt" {
-  uri = "qemu+ssh://kirimson@192.168.122.1/system"
+  uri = "qemu+ssh://kirimson@192.168.122.1/system?keyfile=/opt/rundeck/id_rsa"
 }
