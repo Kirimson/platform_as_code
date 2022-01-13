@@ -39,7 +39,7 @@ def run(cmdb_url, token, verify, service, role, rsa_key, out_file):
 
     out_filepath = os.path.join(out_file, 'pac_inventory.yaml')
     with open(out_filepath, 'w') as f:
-        f.write()
+        f.write(inv)
 
 def generate_inventory(clusters, vms, role_folder, rsa_key):
     base_path = os.path.dirname(os.path.realpath(__file__))
