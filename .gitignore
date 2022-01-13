@@ -132,3 +132,4 @@ dmypy.json
 .terraform.local.hcl
 terraform.tfstate
 terraform.tfstate.backup
+terraform/services

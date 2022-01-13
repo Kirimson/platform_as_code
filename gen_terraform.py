@@ -28,9 +28,7 @@ def run(cmdb_url, token, verify, service):
         for vm in cluster_vms:
             vms.append(vm)
 
-    tf_file = generate_terraform(vms, service)
-
-    
+    tf_file = generate_terraform(vms, service)  
 
     print(tf_file)
 
@@ -44,10 +42,10 @@ def generate_terraform(vms, service_name):
     TEMPLATE_FILE = "pac_server.tf"
     template = templateEnv.get_template(TEMPLATE_FILE)
 
-    service_folder = os.path.join(base_path, 'terraform', service_name)
+    service_folder = os.path.join(base_path, 'terraform/services', service_name)
     if not os.path.isdir(service_folder):
         try:
-            os.mkdir(service_folder)
+            os.makedirs(service_folder)
         except OSError as e:
             print(e)
 

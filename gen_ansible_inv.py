@@ -11,7 +11,9 @@ import pynetbox
 @click.option('--verify', default=None, help='CMDB Token')
 @click.option('-s', '--service', default=None, help='Service name')
 @click.option('-r', '--role', default="test", help='Role name')
-def run(cmdb_url, token, verify, service, role):
+@click.option('--rsa-key', help='Ansible RSA Key')
+@click.option('-o', '--out-file', help='Ansible RSA Key')
+def run(cmdb_url, token, verify, service, role, rsa_key, out_file):
     # Setup the netbox api interface
     netbox = pynetbox.api(cmdb_url, token=token)
     # If SSL verify file provided, set the netbox Session object to use it
@@ -32,10 +34,10 @@ def run(cmdb_url, token, verify, service, role):
             vms[cluster.name].append(vm)
     print(vms)
 
-    inv = generate_inventory(clusters, vms, role)
+    inv = generate_inventory(clusters, vms, role, rsa_key)
     print(inv)
 
-def generate_inventory(clusters, vms, role_folder):
+def generate_inventory(clusters, vms, role_folder, rsa_key):
     base_path = os.path.dirname(os.path.realpath(__file__))
 
     template_folder = os.path.join(base_path, 'templates')
@@ -52,7 +54,7 @@ def generate_inventory(clusters, vms, role_folder):
         except OSError as e:
             print(e)
 
-    inventory_file = template.render(clusters=clusters, vms=vms)
+    inventory_file = template.render(clusters=clusters, vms=vms, rsa_key=rsa_key)
 
     # tf_filepath = os.path.join(service_folder, F'main.tf')
     # with open(tf_filepath, 'w') as f:
